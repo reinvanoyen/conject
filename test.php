@@ -22,10 +22,10 @@ class DependingClass
 
 class SomeFactoryDependency
 {
-	public function __construct()
-	{
-		$this->value = substr(md5(rand()), 0, 7);
-	}
+    public function __construct()
+    {
+        $this->value = substr(md5(rand()), 0, 7);
+    }
 }
 
 class FactoryCreatedClass
@@ -63,11 +63,11 @@ var_dump($simple_class2->dependency->value.' > '.$simple_class3->dependency->val
 
 // Factory test
 $c->factory('SomeFactoryDependency', function () use ($c) {
-	return new SomeFactoryDependency();
+    return new SomeFactoryDependency();
 });
 
 $c->factory('FactoryCreatedClass', function () use ($c) {
-	return new FactoryCreatedClass($c->get('SomeFactoryDependency'));
+    return new FactoryCreatedClass($c->get('SomeFactoryDependency'));
 });
 
 $factory_class = $c->get('FactoryCreatedClass');
